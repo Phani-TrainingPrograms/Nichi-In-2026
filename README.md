@@ -11,3 +11,10 @@
 - Intro to HTML, CSS and JS.
 - What is Nodejs
 - Sample HTML page with inline and internal CSS.
+
+### Day 2
+- Tables, list, Hyperlink
+- HTML Forms
+- Styling with CSS
+- CSS Basic Syntax
+- CSS Selectors
