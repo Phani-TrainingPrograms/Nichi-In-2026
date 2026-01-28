@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Forms 2.0</title>
+</head>
+
+<body>
+    <form id="userform">
+        <div>
+            <h2>Event Registration Form</h2>
+            <hr>
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Tom Alter" required /> <br>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="tomalter@gmail.comr" required /> <br>
+
+            <label for="tickets">Number of Tickets (1-5)</label>
+            <input type="number" id="tickets" min="1" max="5" required /> <br>
+
+            <label for="arrival">Arrival Date:</label>
+            <input type="date" id="arrival" required /> <br>
+
+            <button type="submit">Register Now</button>
+        </div>
+        <div id="divDisplay">
+
+        </div>
+        <script>
+            const form = document.getElementById("userform");
+            const display = document.getElementById("divDisplay");
+
+            form.addEventListener('submit', function(ev){
+                ev.preventDefault();
+                const fName = document.getElementById("fullName").value;
+                const email = document.getElementById("email").value;
+                const tickets = document.getElementById("tickets").value;
+                const arrival = document.getElementById("arrival").value;
+
+                const data = `The Name : ${fName} is arriving on ${arrival} and we have confirmed tickets of ${tickets} and notification is sent over email to ${email} }. Upon arrival, Mr. ${fName} shall pay an amount of Rs.${tickets * 200 + 45} GST`;
+                display.innerHTML = `<strong>${data}</strong>`;
+            })
+        </script>
+    </form>
+</body>
+</html>

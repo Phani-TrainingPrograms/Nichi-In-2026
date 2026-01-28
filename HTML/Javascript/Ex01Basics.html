@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function apple(){
+            alert("Button was clicked");//alert is a built in function of JS to display a message to the User.
+            const name = prompt("Enter the Name please");
+            alert("The name is " + name)
+
+            const fVal = prompt("Enter the First Value")
+            const sVal = prompt("Enter the Second Value")
+            const res = `The Added value is ${fVal + sVal}, The Subtracted Value is ${fVal - sVal}`;
+            alert(res);
+            const ans = confirm("R U Okay with the result?");
+            alert("The selected answer is " + ans)
+        }
+    </script>
+</head>
+<body>
+    <button id="btnClick" onclick="apple()">Click Me!!!</button>
+</body>
+</html>
