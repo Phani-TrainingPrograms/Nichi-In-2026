@@ -18,3 +18,4 @@
 - Styling with CSS
 - CSS Basic Syntax
 - CSS Selectors
+- Intro to JS
