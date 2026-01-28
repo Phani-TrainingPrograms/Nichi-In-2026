@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Notes:</h2>
+    <p>
+        <ol>
+            <li>In JS, we have 3 ways to declare variables. Of them, only 2 are prominently used. The 3rd (var) is the older one and is obselete. </li>
+            <li>let: Since 2015 (ES6), let is prefered way of declaring variables in JS. It is scope based and shall not leak the variable. let allows to redeclare as well as reassign the value under its scope. </li>
+            <li>const: It is similar to let, but shall not allow to reassign/redeclare the value at the same scope.</li>
+            <li>var: var is function based and shall be leaked outside its scope giving abnomral results. var is old and is not recommended for newer Applications.  </li>
+            <li></li>
+        </ol>
+    </p>
+    <script>
+        const fruit = "Mango";
+        if(true){
+            var element = "Value"
+        }
+        alert(element);//value will be available here, with let its not possible. 
+
+        
+        function testMe(){
+            fruit = "Test";
+            if(true){
+                const fruit = "apple";//shall not leak the variable. It is like a new variable scoped within the true block. 
+                console.log(fruit + " inside the true block")
+            }
+        }
+        testMe();//Call this function....
+        console.log(fruit); //Inaccessible as the fruit is scoped within the block. 
+        </script>
+</body>
+</html>
