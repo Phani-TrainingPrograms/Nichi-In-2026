@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Data Types of JS</h2>
+    <hr/>
+    <p>
+        JS is not strict in type checking. It mainly supports 4 kinds of data.
+        They are :
+        <ol>
+            <li>Number which is both integer and float.</li>
+            <li>String</li>
+            <li>Boolean</li>
+            <li>object</li>
+        </ol>
+        U can get the type of data using typeof function.
+    </p>
+    <script>
+        const no = prompt("Enter the number");
+        console.log(typeof(no))//string
+        const number = Number(no);
+        console.log(typeof(number))//number
+        const data = [123,23,34,67,45] ;
+        const tryagain = true;
+        console.log(typeof(tryagain))
+        console.log(typeof(data))
+        let value; //If a variable is declared but assigned, then its called undefined. 
+        console.log(typeof(value))
+        console.log(typeof(Phaniraj));
+    </script>
+</body>
+</html>

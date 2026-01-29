@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>parseInt and parseFloat</li>
+        <li>Number</li>
+        <li>isNaN</li>
+        <li>switch and if statements in JS.</li>
+    </ol>
+    <script>
+        //It is recommended to place your scripts at the end of the document. Just above the body closure tag. 
+        let v1 = prompt("Enter the First Value")
+        const fVal = Number(v1);//This shall be strict during data Conversion. 
+        if(isNaN(fVal)){
+            alert("not possible to convert to a valid number");
+            v1 = 0;
+        }else{
+            v1 = fVal; 
+        }
+
+        const v2 = prompt("Enter the Second Value")
+        const sVal = Number(v2);
+        if(isNaN(sVal)){
+            alert("not possible to convert to a valid number");
+            v2 = 0;
+        }else{
+            v2 = sVal;
+        }
+        const op = prompt("Enter the option as +, -, * or /");
+        let result = 0.0;
+        switch (op) {
+            case "+":
+                result = v1 + v2;
+                break;
+            case "-":
+                result = v1 - v2;
+                break;
+            case "*":
+                result = v1 * v2;
+                break;
+            case "/":
+                result = v1 / v2;
+                break;
+            default:
+                alert("Invalid Operation");
+                break;
+        }
+        alert(`The Result is ${result}`)
+    </script>
+</body>
+</html>

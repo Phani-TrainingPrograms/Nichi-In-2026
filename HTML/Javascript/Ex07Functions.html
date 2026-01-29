@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Functions in JS</h1>
+    <div>
+        <ol style="list-style-type:1;">
+            <li>Functions can be created in 3 ways in JS</li>
+            <li>Named Functions: Used with function keyword and a name</li>
+            <li>Anonymous Functions: Function with no name but assigned to a const.</li>
+            <li>Arrow functions: Simplified Anonymous Functions</li>
+        </ol>
+    </div>
+    <script>
+        function testMe(){
+            alert("Tested")
+        }//named function as the function is identified by a anme called testme
+
+        //Anonymous Functions...
+        const simpleFunc = function(id, name, address){
+            alert("The Function with args " + `${name} with address ${address} and id ${id}`)
+        }
+
+        simpleFunc(123, "Phniraj", "Bangalore");
+
+        const addfunc = (v1, v2) => v1 + v2
+        const subFunc = (v1, v2) => v1 - v2;
+        const mulFunc = (v1, v2) => v1 * v2;
+        const divFunc = (v1, v2) => v1 / v2;
+        const sqrtFunc = (v1) => Math.sqrt(v1);
+        const sqrFunc = (v1) => mulFunc(v1, v2);
+        
+    </script>
+</body>
+</html>

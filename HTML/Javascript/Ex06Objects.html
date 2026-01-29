@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Objects in JS</h1>
+    <hr>
+    <div>
+        <h2>Objects usage</h2>
+        <hr>
+        <p>
+            Objects in JS can be created in 3 different ways:
+            <br/> Singleton objects
+            <br/> functional objects.
+            <br/> Class objects. 
+            <p>
+                objects are internally List that behave like dictionary of compiler languages.       
+            </p>
+        </p>
+    </div>
+    <script>
+        const rec = { id : 123, name : "Phani Raj", residence : "Bangalore"};
+        const rec2 = rec;
+        rec2.salary = 45000;
+        console.log(rec)
+        console.log(rec2)
+
+        //Iterations: using for....in loop to iterate thro prop name. 
+        for (const prop in rec) {
+            console.log(`Key: ${prop}, Value: ${rec[prop]}`)
+        }
+        //////////////Using Function based objects/////////////////////////
+        const Employee = function(id, name, address){
+            this.empId = id
+            this.empName = name
+            this.empAddress = address
+        }
+        //Old style of creating classes and objects in JS. Its now obselete.         
+        const emp1 = new Employee(123, "Phaniraj", "Bangalore");
+        const emp2 = new Employee(124, "Mahesh", 50000);
+        console.log(emp1)
+        console.log(emp2)
+
+        ///////////////ES6 version of class and object//////////////
+        class Customer{
+            constructor(id, name, billamount) {
+                this.id = id;
+                this.name = name;
+                this.amount = billamount
+            }
+        }
+
+        const cst1 = new Customer(123, "TestName", 5000)
+        const cst2 = new Customer(124, "SugarName", 300)
+        const cst3 = new Customer(125, "ArtyName", 500)
+        const cst4 = new Customer(126, "SuhyName", 400)
+        console.log(cst1)
+        console.log(cst2)
+        console.log(cst3)
+        console.log(cst4)
+    </script>
+</body>
+</html>

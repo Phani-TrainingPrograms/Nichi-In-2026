@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Arrays in JavaScript</h2>
+    <div>
+        <ol>
+            <li>Arrays in JS are more like collections. </li>
+            <li>Its Dynamic, U can add, remove elements at any point.</li>
+            <li>All Arrays in JS are objects of Array class.</li>
+            <li>Technically they are all objects.</li>
+            <li>With Array functions, we can add, remove, update and search the elements of the array</li>
+            <li>Arrays in JS behaves more like LIST of Java</li>
+            <li>push, unshift and splice are used to manipulate the data of the array.</li>
+        </ol>
+    </div>
+    <script>
+        //const arra = [];//Its a blank array..
+        const array = ["Apples", "Mangoes", "Oranges"];
+        console.log(array)
+        console.log(typeof(array))
+
+        array.push("Kiwi fruits");//adds to the bottom of the list. 
+        array.unshift("Pine Apples");//adds to the begining of the list. 
+        console.log(array)
+        array.splice(3, 1)
+
+        //Iteration of arrays:
+        console.log("Iterating using For...of loop.......")
+        for (const element of array) {
+            console.log(element)
+        }//New in ES6...
+        //U can use foreach Function in Array using callback functions and Arrow functions that shall be covered later. 
+        console.log("Iterate using For loop......")
+        for(let i =0; i < array.length; i++){
+            console.log(array[i])
+        }
+        //U can also iterate using for in loop....
+        console.log("Iterating thru For....in Loop")
+        for(index in array){
+            console.log(`Index: ${index}, Value: ${array[index]}`)
+        }
+
+    </script>
+</body>
+</html>

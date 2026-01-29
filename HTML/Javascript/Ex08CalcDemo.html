@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./mathCalc.js"></script>
+    <script>
+        const operation = (v1, v2, operand)=>{
+            switch (operand) {
+                case "Add": return addFunc(v1, v2); 
+                case "Subtract": return subFunc(v1, v2); 
+                case "Multiply": return mulFunc(v1, v2); 
+                case "Divide": return divFunc(v1, v2); 
+                default: alert("Not a valid Choice");break;
+            }
+        }
+        function onBtnClick(){
+            debugger;
+            const v1 = Number(document.getElementById("txtNum1").value);
+            if(isNaN(v1)){
+                alert("Not a valid number to compute")
+                return;//It exits the function...
+            }
+            const v2 = Number(document.getElementById("txtNum2").value);
+            if(isNaN(v2)){
+                alert("Not a valid number to compute")
+                return;
+            }
+            const operand = document.getElementById("operand").value;    
+            const res = operation(v1,v2, operand);
+            document.getElementById("spResult").innerText = res;
+        }
+    </script>
+</head>
+<body>
+    <h1>Calc Program</h1>
+    <hr>
+    <div>
+        <h2>Arithematic App</h2>
+        <section>
+            <input type="text" id="txtNum1" placeholder="Enter the First Value">
+            <select id="operand">
+                <option>Select</option>
+                <option>Add</option>
+                <option>Subtract</option>
+                <option>Multiply</option>
+                <option>Divide</option>
+            </select>
+            <input type="text" id="txtNum2" placeholder="Enter the Second Value">
+            <button id="btnResult" onclick="onBtnClick()">=</button>
+            <span id="spResult"></span>
+        </section>
+    </div>
+</body>
+</html>
