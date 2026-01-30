@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/mainStyles.css">
+    <script src="./DOMManipulation.js"></script>
+    <script>
+        //Unobtrusive JS...
+        const empRepo = new EmployeeRepo();
+        function fillRecords(){
+            const table = document.getElementById("tblRecords");
+
+            if(table == undefined){
+                return;
+            }
+            table.innerHTML = `<tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Address</th>
+                    <th>Employee Salary</th>
+                    <th>Options</th>
+                </tr>`
+
+            const records = empRepo.getAll();
+            for(rec of records){
+                const row = `<tr><td>${rec.id}</td><td>${rec.name}</td><td>${rec.address}</td><td>${rec.salary}</td>
+                    <td>
+                        <a href="#" onclick="onEdit(${rec.id})">Edit</a>
+                        <a href="#" onclick="onDelete(${rec.id})">Delete</a>
+                    </td></tr>`
+                table.innerHTML += row;
+            }
+        }
+        function onEdit(id){
+            const rec = empRepo.getEmployee(id);
+            if(rec == undefined){
+                alert("Record not found to display");
+                return;
+            }
+            document.getElementById("txtEditId").value = rec.id
+            document.getElementById("txtEditName").value = rec.name
+            document.getElementById("txtEditAddress").value = rec.address
+            document.getElementById("txtEditSalary").value = rec.salary
+        }
+        function onDelete(id){
+            console.log(id)
+            empRepo.deleteEmployee(id);
+            alert("Employee deleted successfully");
+            fillRecords();
+        }
+        function initialize(){
+            empRepo.addEmployee(new Employee(123, "Phaniraj", "Bangalore", 56000))
+            empRepo.addEmployee(new Employee(124, "Vinod Kumar", "Shimoga", 56000))
+            empRepo.addEmployee(new Employee(125, "Rajesh", "Mysore", 56000))
+            empRepo.addEmployee(new Employee(126, "Praneeth", "Chennai", 56000))
+            console.log(empRepo.empCollection.length)
+            fillRecords();
+
+            const addBtn = document.getElementById("btnAdd");
+            addBtn.addEventListener("click", ()=>{
+                const name = document.getElementById("txtName").value
+                const address = document.getElementById("txtAddress").value
+                const salary = document.getElementById("txtSalary").value
+                const genId = empRepo.empCollection[empRepo.empCollection.length -1].id + 1;
+                const emp = new Employee(genId, name, address, salary)
+                empRepo.addEmployee(emp);
+                fillRecords();
+                alert("Employee added successfully");    
+            })
+
+            const updateBtn = document.getElementById("btnUpdate");
+            updateBtn.addEventListener("click", ()=>{
+                const name = document.getElementById("txtEditName").value
+                const address = document.getElementById("txtEditAddress").value
+                const salary = document.getElementById("txtEditSalary").value
+                const id = document.getElementById("txtEditId").value
+                const emp = new Employee(id, name, address, salary)
+                empRepo.updateEmployee(emp);
+                fillRecords();
+                alert("Employee updated successfully");   
+            })
+
+        }
+
+
+        window.addEventListener("load", initialize);
+    </script>
+</head>
+<body>
+    <h2>DOM Manipulation</h2>
+    <hr>
+    <div>
+        <section>
+            <h2>List of Employees</h2>
+            <table id="tblRecords" border="1">
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Address</th>
+                    <th>Employee Salary</th>
+                    <th>Options</th>
+                </tr>
+            </table>
+        </section>
+        <section class="block">
+            <h2>Add a new Record</h2>
+            <hr>
+            <input type="text" placeholder="Enter the Name" id="txtName"><br>
+            <input type="text" placeholder="Enter the Address" id="txtAddress"><br>
+            <input type="number" placeholder="Enter the Salary" id="txtSalary"><br>
+            <button id="btnAdd">Add Record</button>
+        </section>
+        <section class="block">
+            <h2>Update Record</h2>
+            <hr>
+            <input type="text" disabled placeholder="Enter the Id" id="txtEditId"><br>
+            <input type="text" placeholder="Enter the Name" id="txtEditName"><br>
+            <input type="text" placeholder="Enter the Address" id="txtEditAddress"><br>
+            <input type="number" placeholder="Enter the Salary" id="txtEditSalary"><br>
+            <button id="btnUpdate">Save changes</button>
+        </section>
+    </div>
+</body>
+</html>

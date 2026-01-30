@@ -14,3 +14,24 @@ tr:nth-child(odd){
 tr:hover{
     background-color: white;
 }
+
+section.block{
+    text-align: center;
+    display: inline-block;
+    width: 30%;
+    padding: 5px;
+    margin: 10px;
+    vertical-align: top;
+    border: 2px double peru;
+    box-shadow: 0 8px 8px 0 grey;
+    /* horizontal vertical blurEffect Spread-Radius Color */
+}
+input{
+    border: 2px solid red;
+    border-radius: 5px;
+    padding : 5px;
+    margin-bottom: 10px;
+}
+input:focus{
+    background-color: yellowgreen;
+}
