@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example for local storage</title>
+    <script>
+        // Function to store data in local storage
+        function storeData() {
+            const dataToStore = prompt("Enter some data to store in local storage:");
+            localStorage.setItem("myData", dataToStore);//store the data in local storage with key "myData"
+             alert("Data stored in local storage.");
+            alert("Data stored in local storage.");
+        }
+
+        function getData(){
+            const retrievedData = localStorage.getItem("myData");//retrieve the data from local storage with key "myData"
+            document.getElementById("spData").innerText = retrievedData ? retrievedData : "No data found in local storage.";
+        }
+
+        window.addEventListener("load", function(){
+            document.getElementsByTagName("button")[0].addEventListener("click", storeData);
+            document.getElementsByTagName("button")[1].addEventListener("click", getData);
+            document.getElementsByTagName("button")[2].addEventListener("click", function(){
+                const data = [];
+                data.push({name: "John", age: 30});
+                data.push({name: "Jane", age: 25});
+                data.push({name: "Doe", age: 35});
+                //3 sets of objects. 
+                const jsonData = JSON.stringify(data);//convert the object array to JSON string
+                alert(jsonData);
+                localStorage.setItem("objData", jsonData);//store the JSON string in local storage
+            });
+
+            document.getElementsByTagName("button")[3].addEventListener("click", function(){
+                const jsonData = localStorage.getItem("objData");//retrieve the JSON string from local storage
+                if(jsonData){
+                    const data = JSON.parse(jsonData);//convert the JSON string back to object array
+                    let displayData = "Retrieved Objects:\n";
+                    for(const obj of data){
+                        displayData += `Name: ${obj.name}, Age: ${obj.age}\n`;
+                    }
+                    alert(displayData);
+                } else {
+                    alert("No object data found in local storage.");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <button>Store Data</button>
+    <button>Retrieve Data</button>
+    <button>Store Objects</button>
+    <button>Retrieve Objects</button>
+    <p>
+        <span id="spData"></span>
+    </p>
+    <div>
+        <h2>Notes</h2>
+        <p>
+            Local Storage is a web storage object that allows you to store key/value pairs in a web browser with no expiration date. 
+            This means the data stored in local storage will persist even after the browser is closed and reopened.
+            Local Storage is specific to the protocol of the page. For example, data stored from a page served over HTTP cannot be accessed by a page served over HTTPS.
+            Data stored in local storage is limited to around 5-10 MB depending on the browser.
+            Local Storage can only store string data. If you want to store objects or arrays, you need to serialize them using JSON.stringify() before storing and parse them using JSON.parse() when retrieving.
+        </p>
+    </div>
+</body>
+</html>

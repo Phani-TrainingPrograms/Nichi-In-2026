@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Example</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            background-color: indianred;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            width: 300px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $("div").click(function() {
+                $(this).hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <section>
+        <h2>What is jQuery?</h2>
+        <p>jQuery is a fast, small, and feature-rich JavaScript library. It simplifies HTML document traversal, manipulation, event handling, and animation.
+            Its moto is "Write less, do more." U can download this library or use CDN servers to include it in your web pages.
+        </p>
+        <p>
+            jQuery is JS itself. It is not a programming language. It is a library built with JS to make it easier to use.
+        </p>
+
+    </section>
+    <div>
+        <p>Simple section of a Page</p>
+    </div>
+    <div>
+        <p>Simple section of a Page</p>
+    </div>
+    <div>
+        <p>Simple section of a Page</p>
+    </div>
+    
+</body>
+</html>

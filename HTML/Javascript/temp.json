@@ -1,0 +1,18 @@
+"employees": 
+[
+    { 
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York"
+    },
+    {
+        "name": "Anna Smith",
+        "age": 25,
+        "city": "London"
+    },
+    {
+        "name": "Peter Jones",
+        "age": 45,
+        "city": "Paris"
+    }
+]

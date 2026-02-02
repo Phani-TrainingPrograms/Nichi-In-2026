@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps and Dictionaries</title>
+    <script>
+        function dictionaryExample(){
+            const dict = {
+                "apple": "A fruit that is red, yellow or green.",
+                "banana": "A fruit that is yellow.",
+                "orange": "A fruit that is orange.",
+                "mango": "A fruit that is yellow and tropical."
+            };
+            
+            console.log("Dictionary Contents:");
+            for(const key in dict){
+                console.log(`${key}: ${dict[key]}`);
+            }
+        }
+        
+        function mapExample(){
+            const numbers = [1,2,3,4,5];
+            const squaredNumbers = numbers.map(value => value * value);
+            console.log("Squared Numbers:", squaredNumbers);
+            console.log("Original Numbers:", numbers);
+            
+        }
+        //todo: Create a function that uses a string array and using map to convert all strings to uppercase.
+        //todo: Create a function that uses an array of employees and use map to convert each record to a row of a table 
+
+        //dictionaryExample();
+        mapExample();
+
+    </script>
+</head>
+<body>
+    <h1>Maps and Dictionaries in JavaScript</h1>
+    <p>
+        Dictionaries in JavaScript can be implemented using arrays with data of key-value pairs.  
+        Map function is used to perform a common operation on each element of the array and return a new array with modified data.
+    </p>
+
+</body>
+</html>
