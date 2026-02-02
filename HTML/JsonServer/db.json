@@ -1,0 +1,34 @@
+{
+  "employees": [
+    {
+      "id": "123",
+      "empName": "Phaniraj",
+      "empAddress": "Bangalore",
+      "empSalary": 50000
+    },
+    {
+      "id": "124",
+      "empName": "Vinod",
+      "empAddress": "Mumbai",
+      "empSalary": 60000
+    },
+    {
+      "id": "125",
+      "empName": "Shankar",
+      "empAddress": "Hyderabad",
+      "empSalary": 70000
+    },
+    {
+      "id": "127",
+      "empName": "Mahesh",
+      "empAddress": "Pune",
+      "empSalary": 50000
+    },
+    {
+      "id": "128",
+      "empName": "Joe Biden",
+      "empAddress": "New York",
+      "empSalary": "45000"
+    }
+  ]
+}

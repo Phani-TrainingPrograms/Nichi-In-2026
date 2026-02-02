@@ -14,8 +14,54 @@
                 e.preventDefault();
                 const index = $(this).index();
                 $("section").eq(index).show(1000).siblings("section").hide(1000);
+                fillRecords();
             });
+            $("#btnAdd").click(addRecord);
         })
+
+        function addRecord(){
+            const id = $("#txtId").val();
+            const name = $("#txtName").val();
+            const address = $("#txtAddress").val();
+            const salary = $("#txtSalary").val();
+            const emp = {
+                id: id,
+                empName: name,
+                empAddress: address,
+                empSalary: salary
+            };
+
+            const url = "http://localhost:3000/employees";
+            $.post(url, JSON.stringify(emp), function(data){
+                alert("Record added successfully");
+                $("#txtId").val('');
+                $("#txtName").val('');
+                $("#txtAddress").val('');
+                $("#txtSalary").val('');
+                
+            });
+        }
+        function fillRecords(){
+           const url = "http://localhost:3000/employees";
+           //It makes a HTTP GET Call to the given URL and on success, it executes the callback function with the data received passed as arg. 
+           $.get(url, function(data){
+            $("#tblRecords tr:gt(0)").remove(); //Clear existing records except the header
+            data.forEach(function(emp){
+                const row = `<tr>
+                                <td>${emp.id}</td>
+                                <td>${emp.empName}</td>
+                                <td>${emp.empAddress}</td>
+                                <td>${emp.empSalary}</td>
+                                <td>
+                                    <button class="btnEdit">Edit</button>
+                                    <button class="btnDelete">Delete</button>
+                                </td>
+                            </tr>`;
+                $("#tblRecords").append(row);
+            })
+                   
+              });
+        }
     </script>
 </head>
 <body>
@@ -41,6 +87,7 @@
         <section>
             <h2>Add a new Record</h2>
             <hr>
+            <input type="number" placeholder="Enter the ID" id="txtId"><br>
             <input type="text" placeholder="Enter the Name" id="txtName"><br>
             <input type="text" placeholder="Enter the Address" id="txtAddress"><br>
             <input type="number" placeholder="Enter the Salary" id="txtSalary"><br>
