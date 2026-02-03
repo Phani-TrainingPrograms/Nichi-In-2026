@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Order Functions</title>
+    <script>
+        function greet(name){
+            return "Hello "+ name;
+        }
+
+        //HOF that takes a function as argument
+        function processUserInput(callback){
+            const name = prompt("Please enter your name.");
+            console.log(callback(name));
+        }
+
+        console.log("Starting HOF example");
+        processUserInput(greet);
+
+        function addValues(a, b){
+            return a + b;
+        }
+
+        const numbers = [1, 2, 3, 4, 5];
+        const sum  = numbers.reduce(addValues, 0);//accumulater, current value, initial value
+        console.log("Sum of numbers array using reducer HOF: "+ sum);
+
+        const prod = numbers.reduce((acc, curr) => acc * curr, 1);
+        console.log("Product of numbers array using reducer HOF: "+ prod);
+        //Find the max of the numbers...
+        //Find the min of the numbers...
+    </script>
+</head>
+<body>
+    <h1>Higher Order Functions</h1>
+    <hr>
+    <div>
+        <section>
+            A higher order Function(HOF) in Js is a function that either:
+            Takes another function as an argument.
+            Returns another function as its result.
+            <p>
+                Its main purpose is to enable functional programming techniques in JS.
+                It provides Abstraction: we can focus on the operation being performed rather than the details of how it is implemented.
+                Code Reusability: we can create generic functions that can be reused with different operations.
+                Composition: we can combine simple functions to create more complex operations.
+            </p>
+            <p>
+                Practical usages of HOFs include maps, filters, and reducers for processing collections of data, event handling in web development, and implementing callbacks for asynchronous operations.
+            </p>
+            <p>
+                Reducer is a function in JS that processes any array and reduce it to a single value by applying a specific operation on each element of the array. (Sum, Product, object, Min, Max etc.,,,)
+            </p>
+        </section>
+    </div>
+</body>
+</html>

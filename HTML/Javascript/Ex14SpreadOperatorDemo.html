@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./empRepo.js"></script>
+    <script>
+        empCollection = JSON.parse(localStorage.getItem("recs")) || []; //if the records are present in localStorage, load them else initialize to empty array.
+        window.addEventListener("load", function(){
+            document.getElementsByTagName("button")[0].addEventListener("click", function(){
+                const rec = {id : 45, name : "Suresh", address : "Mysore", salary : 40000 };
+                addEmployee(rec)
+                localStorage.setItem("recs", JSON.stringify(empCollection));
+                alert("Record added successfully")
+            })
+
+            document.getElementsByTagName("button")[1].addEventListener("click", function(){
+                const id = parseInt(prompt("Enter Employee ID to delete: "));
+                deleteEmployee(id);
+                localStorage.setItem("recs", JSON.stringify(empCollection));
+                alert("Record deleted successfully")
+            })
+
+            document.getElementsByTagName("button")[2].addEventListener("click", function(){
+                const id = parseInt(prompt("Enter Employee ID to update: "));
+                const rec = findEmployee(id);
+                if(rec){
+                    rec.name = "Updated Name";
+                    rec.address = "Updated Address";
+                    rec.salary = 55000;
+                    updateEmployee(rec);
+                    localStorage.setItem("recs", JSON.stringify(empCollection));
+                    alert("Record updated successfully")
+                } else {
+                    alert("Employee not found");
+                }
+            })
+
+            document.getElementsByTagName("button")[3].addEventListener("click", function(){
+                const id = parseInt(prompt("Enter Employee ID to find: "));
+                const rec = findEmployee(id);
+                if(rec){
+                    alert(`Employee Found: ID: ${rec.id}, Name: ${rec.name}, Address: ${rec.address}, Salary: ${rec.salary}`);
+                } else {
+                    alert("Employee not found");
+                }
+            })  
+        })
+    </script>
+</head>
+<body>
+    <button>Add</button>
+    <button>Delete</button>
+    <button>Update</button>
+    <button>Find</button>
+</body>
+</html>

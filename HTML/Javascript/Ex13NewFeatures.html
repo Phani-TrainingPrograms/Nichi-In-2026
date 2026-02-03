@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES 6 Features</title>
+    <script>
+        const name = "Phani Raj";
+        const strText = `My Name is ${name}. I am learning ES6 features of Javascript.`;
+        console.log(strText);
+
+        /////////////Destructuring//////////////////
+        const emp = { id: 123, name: "Phani", address: "Bangalore", salary: 45000};
+
+        let { name : empName, salary: empSalary} = emp;//destructuring, UR employee object is mapped to local variables empName and empSalary
+        console.log(`Employee Name: ${empName}, Salary: ${empSalary}`); //U no longer need to use emp.name, emp.salary
+
+        //////////////Default Parameters//////////////////
+        function multiply(a, b = 1){//if b is not passed, it takes default value of 1
+            return a * b;
+        }
+        const res1 = multiply(5, 2); //10
+        const res2 = multiply(5); //5, b takes default value of 1
+        console.log(`Result1: ${res1}, Result2: ${res2}`);
+
+        //////////////Spread Operator//////////////////
+        const arr1 = [1, 2, 3];
+        const arr2 = [4, 5, 6];
+        const newArr = [...arr1,...arr2]; //Combining two arrays using spread operator
+        console.log(newArr)
+
+        const arr3 = [...newArr, 7, 8, 9]; //Expanding newArr and adding more elements
+        //////////////Rest Parameters//////////////////
+        function addAll(...numbers){//captures all arguments into an array called numbers
+            return numbers.reduce((acc, curr) => acc + curr, 0);
+        }
+        const sum = addAll(1, 2, 3, 4, 5); //15
+    </script>
+</head>
+<body>
+    <H1>ES 6 Features</H1>
+    <hr>
+    <div>
+        <h2>List of feature</h2>
+        <ol>
+            <li>Arrow Functions : Lambda Functions that reduces the complexity of Anonymous functions</li>
+            <li>Template Literals: Interpollation of strings.</li>
+            <li>Destructuring: Breaking the object to local variables is called destructing.</li>
+            <li>Default Parameters: It shall be the last of the parameter list of the function.</li>
+            <li>Spread Operator: Used to expand arrays and objects into individual elements.</li>
+            <li>Rest Parameters: Used to capture an indefinite number of arguments as an array.</li>
+            <li>Let and Const: Scoped based variables and consts are values that are not reassignable.</li>
+        </ol>
+    </div>
+</body>
+</html>
