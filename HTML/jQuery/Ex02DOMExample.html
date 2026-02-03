@@ -8,6 +8,7 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.7.1.min.js"></script>
     <script src="../Javascript/DOMManipulation.js"></script>
     <script>
+        const url = "http://localhost:3000/employees";
         $(document).ready(function(){
             $("section").hide(1000);
             $("nav a").click(function(e){
@@ -17,7 +18,38 @@
                 fillRecords();
             });
             $("#btnAdd").click(addRecord);
-        })
+
+
+            $("#btnUpdate").click(function(){
+                //extract all values from the edit text boxes
+                const id = $("#txtEditId").val();
+                const name = $("#txtEditName").val();
+                const address = $("#txtEditAddress").val();
+                const salary = $("#txtEditSalary").val();
+                //create an employee object with it.
+                const emp = {
+                    id: id,
+                    empName: name,
+                    empAddress: address,
+                    empSalary: salary
+                };
+                const temUrl = url +"/"+id;
+                //call the PUT method of jQuery with url, employee object and callback function
+                $.ajax({
+                    url: temUrl,//URL to call
+                    type: 'PUT',//HTTP Method
+                    data: JSON.stringify(emp),//data to put/send
+                    contentType: 'application/json; charset=utf-8',//data type
+                    success: function(data){//callback function for success
+                        alert("Record updated successfully");
+                    },
+                    error: function(err){//callback function for error
+                        alert("Error while updating record");
+                    }
+                });
+                //in the callback function, alert the user that record is updated.
+            });
+        });
 
         function addRecord(){
             const id = $("#txtId").val();
@@ -31,7 +63,6 @@
                 empSalary: salary
             };
 
-            const url = "http://localhost:3000/employees";
             $.post(url, JSON.stringify(emp), function(data){
                 alert("Record added successfully");
                 $("#txtId").val('');
@@ -42,7 +73,6 @@
             });
         }
         function fillRecords(){
-           const url = "http://localhost:3000/employees";
            //It makes a HTTP GET Call to the given URL and on success, it executes the callback function with the data received passed as arg. 
            $.get(url, function(data){
             $("#tblRecords tr:gt(0)").remove(); //Clear existing records except the header
@@ -53,15 +83,39 @@
                                 <td>${emp.empAddress}</td>
                                 <td>${emp.empSalary}</td>
                                 <td>
-                                    <button class="btnEdit">Edit</button>
-                                    <button class="btnDelete">Delete</button>
+                                    <button class="btnEdit" onclick="editRecord(${emp.id})">Edit</button>
+                                    <button class="btnDelete" onclick="deleteRecord(${emp.id})">Delete</button>
                                 </td>
                             </tr>`;
                 $("#tblRecords").append(row);
             })
-                   
-              });
+           });
         }
+
+        function deleteRecord(id){
+            const temUrl = url+"/"+id;
+            $.ajax({
+                url: temUrl,
+                type: 'DELETE',
+                success: function(data){
+                    alert("Record deleted successfully");
+                },
+                error: function(err){
+                    alert("Error while deleting record");
+                }
+            });
+        }
+        function editRecord(id){
+            const temUrl = url +"/"+id;
+            $.get(temUrl, function(data){
+                $("section").eq(2).show(1000).siblings("section").hide(1000);
+                $("#txtEditId").val(data.id);
+                $("#txtEditName").val(data.empName);
+                $("#txtEditAddress").val(data.empAddress);
+                $("#txtEditSalary").val(data.empSalary);
+            });
+        }
+        
     </script>
 </head>
 <body>
