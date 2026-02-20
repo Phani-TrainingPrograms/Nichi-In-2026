@@ -1,0 +1,16 @@
+{
+  "name": "jasmine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "jasmine": "^6.0.0"
+  }
+}
