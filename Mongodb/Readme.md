@@ -3,7 +3,7 @@
 
 # Features of MongoDB.
 - Document : A record in Mongodb, similar to Row of SQL. 
-- Collection: Group of Docs, similart o table of SQL
+- Collection: Group of Docs, similar to table of SQL
 - Schema-less: Documents in the same collection can have different fields(column). 
 - Scalability: Uses "Sharding " to distibute data across multiple apps. 
 
@@ -36,3 +36,4 @@ db.empList.insertMany(
 2. use is used to switch to the database, if the database does not exist, it shall create and switch. 
 3. createCollection function of the db object allows to create a new collection. Optionally U can add size and other security restrictions. 
 4. insertOne allows to insert single record into the collection. the structure of the data shall be a Javascript object. For bulk insertions, use insertMany 
+
