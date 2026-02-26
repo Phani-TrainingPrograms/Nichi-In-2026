@@ -3,6 +3,8 @@ import Calc from "./Calc"
 import Footer from "./Footer"
 import Header from "./Header"
 import PropsInfo from "./PropsInfo"
+import StatefullComponents from "./StatefullComponents"
+import StatefulTodoApp from "./StatefulTodoApp"
 import UserInfo from "./userinfo"
 function App() {
   return (
@@ -18,6 +20,12 @@ function App() {
           </div>
           <div className="col-md-4 m-2">
             <Calc />
+          </div>
+          <div className="col-md-4 m-2">
+            <StatefullComponents/>
+          </div>
+          <div className="col-md-4 m-2">
+            <StatefulTodoApp/>
           </div>
         </div>
       </div>
