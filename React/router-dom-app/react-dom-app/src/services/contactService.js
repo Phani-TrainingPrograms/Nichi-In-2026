@@ -1,5 +1,6 @@
 import axios from "axios";
-export class ContactService {
+
+export default class ContactService {
     static baseUrl = "http://localhost:1234/api/contacts";
 
     static getContacts() {

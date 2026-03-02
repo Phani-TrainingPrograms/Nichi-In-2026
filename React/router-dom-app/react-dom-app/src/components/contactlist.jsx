@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ImageContact from './imgcontact.jsx'
+import ContactService from '../services/contactService.js'
 export default function ContactlList() {
   const [state, setState] = useState({
-    contacts : [
-      {id : 123, name : "Phaniraj", mobile: 12434334, image : "pic1.png"},
-      {id : 123, name : "Phaniraj", mobile: 12434334, image : "pic1.png"},
-      {id : 123, name : "Phaniraj", mobile: 12434334, image : "pic1.png"},
-      {id : 123, name : "Phaniraj", mobile: 12434334, image : "pic1.png"}
-    ]
+    contacts : []
   })
+
+  useEffect(() => {
+    async function fetchData(){
+      let response = await ContactService.getContacts();
+      setState({...state, contacts : response.data});
+    }
+    fetchData();
+  }, [])
 
   let { contacts } = state;
   return (
